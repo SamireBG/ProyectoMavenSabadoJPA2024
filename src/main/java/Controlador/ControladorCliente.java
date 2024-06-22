@@ -36,7 +36,7 @@ public class ControladorCliente extends HttpServlet {
 		ClassClienteImp crud=new ClassClienteImp();
 		List<TblCliente> listadocliente=crud.ListadoCliente();
 		//invocamos el listado de productos para la vista
-		request.setAttribute("listadodeproductos", listadocliente);
+		request.setAttribute("listadocliente", listadocliente);
 		//redirecionamos
 		request.getRequestDispatcher("/ListadoClientes.jsp").forward(request, response);
 		
@@ -75,6 +75,10 @@ public class ControladorCliente extends HttpServlet {
 		cliente.setNacionalidad(nacionalidad);
 		//invocamos al metodo registrar
 		crud.RegistrarCliente(cliente);
+		
+		List<TblCliente> listadocliente=crud.ListadoCliente();
+		//invocamos el listado de productos para la vista
+		request.setAttribute("listadocliente", listadocliente);
 		//redirecionamos
 		request.getRequestDispatcher("/ListadoClientes.jsp").forward(request, response);
 		
